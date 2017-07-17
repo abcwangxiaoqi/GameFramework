@@ -1,2 +1,8 @@
 Library/
 Temp/
+Assembly-CSharp.csproj
+*.csproj
+*.sln
+*.userprefs
+.vs/
+obj/
