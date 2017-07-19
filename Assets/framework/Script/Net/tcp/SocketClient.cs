@@ -59,6 +59,10 @@ public class SocketClient
 
     void ReceiveFromServer(System.IAsyncResult ar)
     {
+        if (socket == null || !socket.Connected)
+            return;
+
+
         int ByteRead = 0;
         try
         {

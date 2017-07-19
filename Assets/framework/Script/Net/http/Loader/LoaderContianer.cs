@@ -40,6 +40,9 @@ public class LoaderContianer
         //return;//不使用相同url同一返回出力，因为可能有postdata请求
         #region 有相同的请求 统一执行回调
 
+        if (loader.currentLoaderTask == null)
+            return;
+
         List<LoaderTask> tasks = taskList.FindAll((LoaderTask t) =>
         {
             LoaderTask tk = loader.currentLoaderTask;
