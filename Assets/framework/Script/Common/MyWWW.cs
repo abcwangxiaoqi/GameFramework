@@ -131,7 +131,16 @@ public class MyWWW : IEnumerator, System.IDisposable
             return false;
         }
 
-        bool result = _www.isDone == false;
+        bool result = true;
+
+        if (_www == null)
+        {
+            result = false;
+        }
+        else
+        {
+            result = _www.isDone == false;
+        }
 
         return result;
     }
