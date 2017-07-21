@@ -7,14 +7,14 @@ public class MyWWW : IEnumerator, System.IDisposable
     float _timeOut = -1f;
     WWW _www = null;
     float _timePassed = 0f;
-    public MyWWW(string url,float timeout=-1)
+    public MyWWW(string url, float timeout = -1)
     {
         _www = new WWW(url);
         _timeOut = timeout;
         _timePassed = 0;
     }
 
-    public MyWWW(string url, byte[] postData,float timeout = -1)
+    public MyWWW(string url, byte[] postData, float timeout = -1)
     {
         _www = new WWW(url, postData);
         _timeOut = timeout;
@@ -23,12 +23,12 @@ public class MyWWW : IEnumerator, System.IDisposable
 
     public MyWWW(string url, WWWForm form, float timeout = -1)
     {
-        _www = new WWW(url,form);
+        _www = new WWW(url, form);
         _timeOut = timeout;
         _timePassed = 0;
     }
 
-    public MyWWW(string url, byte[] postData, Dictionary<string,string> headers, float timeout = -1)
+    public MyWWW(string url, byte[] postData, Dictionary<string, string> headers, float timeout = -1)
     {
         _www = new WWW(url, postData, headers);
         _timeOut = timeout;
@@ -86,7 +86,7 @@ public class MyWWW : IEnumerator, System.IDisposable
             else
             {
                 return _www.error;
-            }            
+            }
         }
     }
 
@@ -114,6 +114,7 @@ public class MyWWW : IEnumerator, System.IDisposable
         }
     }
 
+    bool dispose = false;
     bool timeoutFlag = false;
 
     object IEnumerator.Current
@@ -139,7 +140,14 @@ public class MyWWW : IEnumerator, System.IDisposable
         }
         else
         {
-            result = _www.isDone == false;
+            if (dispose)
+            {
+                result = false;
+            }
+            else
+            {
+                result = _www.isDone == false;
+            }
         }
 
         return result;
@@ -151,6 +159,7 @@ public class MyWWW : IEnumerator, System.IDisposable
 
     public void Dispose()
     {
+        dispose = true;
         _www.Dispose();
     }
 }
