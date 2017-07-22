@@ -36,7 +36,7 @@ public class NativeTimer
         {
             if(lpTime>0)
             {
-                while (lpindex>lpTime)
+                while (lpindex<lpTime)
                 {
                     yield return time;
                     if (callback != null)
