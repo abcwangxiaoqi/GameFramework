@@ -82,17 +82,7 @@ public class EditorSprite : ObjectBase, IEditorSprite
     /// <returns></returns>
     public bool HasAlphaChannel()
     {
-        for (int i = 0; i < Tex.width; ++i)
-            for (int j = 0; j < Tex.height; ++j)
-            {
-                Color color = Tex.GetPixel(i, j);
-                float alpha = color.a;
-                if (alpha < 1.0f - 0.001f)
-                {
-                    return true;
-                }
-            }
-        return false;
+        return textureImport.DoesSourceTextureHaveAlpha();
     }
 
 
