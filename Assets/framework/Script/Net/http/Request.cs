@@ -7,16 +7,16 @@ public abstract class Request
     LoaderContianer contianer = null;
     public Request()
     {
-        contianer = CacheManager.Get<LoaderContianer>(contianerKey);
+        contianer = CacheManager.Get<LoaderContianer>(contianerKey.ToString());
         if (contianer == null)
         {
-            int num = contianerReqNum;
+            int num = LoaderContianerConst.getNum(contianerKey);
             if (num <= 0)
             {
                 num = 1;
             }
             contianer = new LoaderContianer(num);
-            CacheManager.Insert<LoaderContianer>(contianerKey, contianer, true);
+            CacheManager.Insert<LoaderContianer>(contianerKey.ToString(), contianer, true);
         }
     }
 
@@ -60,6 +60,5 @@ public abstract class Request
         task.Stop();
     }
 
-    abstract protected string contianerKey { get; }
-    abstract protected int contianerReqNum { get; }
+    abstract protected EContianer contianerKey { get; }
 }

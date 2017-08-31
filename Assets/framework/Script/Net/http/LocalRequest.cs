@@ -4,19 +4,11 @@
 public abstract class LocalRequest : Request
 {
 
-    protected override string contianerKey
+    protected override EContianer contianerKey
     {
         get
         {
-            return ELoaderContianerKey.LOCALREQ;
-        }
-    }
-
-    protected override int contianerReqNum
-    {
-        get
-        {
-            return 1;
+            return EContianer.LocalReq;
         }
     }
 }

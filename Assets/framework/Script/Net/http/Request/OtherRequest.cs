@@ -15,19 +15,11 @@ public class OtherRequest : ResRequest
         return task;
     }
 
-    protected override string contianerKey
+    protected override EContianer contianerKey
     {
         get 
         {
-            return ELoaderContianerKey.RESOTHERREQ;
-        }
-    }
-
-    protected override int contianerReqNum
-    {
-        get 
-        {
-            return 1;
+            return EContianer.ResOtherReq;
         }
     }
 }
