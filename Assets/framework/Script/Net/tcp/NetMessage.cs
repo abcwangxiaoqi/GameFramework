@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-namespace Community
+namespace TCPNet
 {
     public class NetMessage
     {
