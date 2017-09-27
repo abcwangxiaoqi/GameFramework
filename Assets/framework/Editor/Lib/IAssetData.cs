@@ -7,6 +7,7 @@ public interface IAssetData
     Object Load();
     void Import();
     void CreatAsset(Object obj);
+    void SaveAsset(Object obj);
     string[] GetDependencies();
     string path { get; }
     void ImportAsset();

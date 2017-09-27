@@ -2,6 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 using System.IO;
+
 public class ObjectBase : IObjectBase
 {
     string assetPath = "";
@@ -115,6 +116,12 @@ public class ObjectBase : IObjectBase
     public void DeleteAsset()
     {
         AssetDatabase.DeleteAsset(path);
+    }
+
+    public void SaveAsset(Object obj)
+    {
+        EditorUtility.SetDirty(obj);
+        AssetDatabase.SaveAssets();
     }
 }
 #endif
