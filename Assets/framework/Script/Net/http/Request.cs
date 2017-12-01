@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
+using LittleMomery;
 
 public abstract class Request
 {
     LoaderContianer contianer = null;
     public Request()
     {
-        contianer = CacheManager.Get<LoaderContianer>(contianerKey.ToString());
+        contianer = SingletonFactory.Get<MomeryInter>().Get<LoaderContianer>(contianerKey.ToString());
         if (contianer == null)
         {
             int num = LoaderContianerConst.getNum(contianerKey);
@@ -16,7 +17,7 @@ public abstract class Request
                 num = 1;
             }
             contianer = new LoaderContianer(num);
-            CacheManager.Insert<LoaderContianer>(contianerKey.ToString(), contianer, true);
+            SingletonFactory.Get<MomeryInter>().Insert<LoaderContianer>(contianerKey.ToString(), contianer);
         }
     }
 
